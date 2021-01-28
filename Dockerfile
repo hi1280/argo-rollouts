@@ -23,16 +23,16 @@ RUN curl -O https://download.docker.com/linux/static/stable/x86_64/docker-${DOCK
   rm -rf ./docker
 
 # Install golangci-lint
-RUN wget https://install.goreleaser.com/github.com/golangci/golangci-lint.sh  && \
-    chmod +x ./golangci-lint.sh && \
-    ./golangci-lint.sh -b $GOPATH/bin && \
-    golangci-lint linters
+# RUN wget https://install.goreleaser.com/github.com/golangci/golangci-lint.sh  && \
+#     chmod +x ./golangci-lint.sh && \
+#     ./golangci-lint.sh -b $GOPATH/bin && \
+#     golangci-lint linters
 
-COPY .golangci.yml ${GOPATH}/src/dummy/.golangci.yml
+# COPY .golangci.yml ${GOPATH}/src/dummy/.golangci.yml
 
-RUN cd ${GOPATH}/src/dummy && \
-    touch dummy.go \
-    golangci-lint run
+# RUN cd ${GOPATH}/src/dummy && \
+#     touch dummy.go \
+#     golangci-lint run
 
 ####################################################################################################
 # Rollout Controller Build stage which performs the actual build of argo-rollouts binaries
